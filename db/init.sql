@@ -57,3 +57,27 @@ email = 'user2@test.com';
 
 SELECT *
 FROM `member`;
+
+# 게시물에 작성자 정보 추가
+
+alter table article
+add column member_id BIGINT UNSIGNED NOT NULL AFTER modifyDate;
+
+update article
+set member_id = 2;
+
+alter table article
+rename column member_id TO memberId;
+
+alter table member
+add column roles CHAR(50) NOT NULL AFTER modifyDate;
+
+# admin 추가
+INSERT INTO `member`
+SET createDate = NOW(),
+modifyDate = NOW(),
+roles = 'ADMIN, MEMBER',
+username = 'admin',
+`password` = '{noop}1234',
+`name` = 'admin',
+email = 'admin@test.com';

@@ -18,6 +18,18 @@ public interface ArticleRepository {
             """)
     List<Article> getArticles();
 
+    @Select("""
+            <script>
+            SELECT A.*, 
+            M.username AS extra_member_username,
+            M.name AS extra_member_name
+            FROM article as A
+            INNER JOIN member as M
+            ON A.memberId = M.id;
+            </script>
+            """)
+    List<Article> getForPrintArticles();
+
     @Insert("""
             <script>
             INSERT INTO article

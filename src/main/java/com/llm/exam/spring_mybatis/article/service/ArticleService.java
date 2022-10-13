@@ -31,4 +31,8 @@ public class ArticleService {
 
         return articleList;
     }
+
+    public List<Article> getForPrintArticles() {
+        return articleRepository.getForPrintArticles();
+    }
 }

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/article")
+@RequestMapping("/adm/article")
 @RequiredArgsConstructor
-public class ArticleController {
+public class AdmArticleController {
     private final ArticleService articleService;
 
     @GetMapping("/list")
@@ -23,11 +23,11 @@ public class ArticleController {
 
         model.addAttribute("articles", articles);
 
-        return "article/list";
+        return "adm/article/list";
     }
 
     @GetMapping("/{id}")
     public String showDetail(@PathVariable Long id) {
-        return "article/detail";
+        return "adm/article/detail";
     }
 }
